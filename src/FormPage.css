@@ -9,6 +9,8 @@
     align-items: center;
     justify-content: flex-start;
     padding-top: 50px;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 .form-container {
@@ -40,16 +42,29 @@
     }
 }
 
-/* Styles for the logo container */
 .logo-container {
-    text-align: center;
-    width: 100%;
+    display: flex;
+    justify-content: center; /* Center logo */
+    align-items: center;
 }
 
-/* Styles for the logo */
 .logo {
-    width: 650px; /* adjust as needed */
-    height: auto; /* maintain aspect ratio */
+    max-width: 100%;
+    height: auto;
+}
+
+/* For tablets: */
+@media (min-width: 768px) and (max-width: 991px) {
+    .logo {
+        max-width: 80%;
+    }
+}
+
+/* For desktop: */
+@media (min-width: 992px) {
+    .logo {
+        max-width: 60%;
+    }
 }
 
 /* Styles for the form inputs */
@@ -96,6 +111,13 @@
 }
 
 /* Styles for the button */
+
+.form-group-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .botoncito {
     background-color: #e73c7e;
     border-color: #e73c7e;
@@ -109,7 +131,6 @@
     position: relative;
     overflow: hidden;
     transition: background-color 0.3s ease;
-    left: 130px;
 }
 
 .botoncito:hover {
