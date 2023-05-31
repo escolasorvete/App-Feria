@@ -6,10 +6,10 @@ FROM node:14-alpine AS build-deps
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY package*.json .
+COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install -f
 
 # Copy the rest of the application code
 COPY . .
