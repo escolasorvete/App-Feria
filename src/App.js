@@ -6,7 +6,7 @@ import IMAGES from "./assets";
 import Logo from "./assets/logo-horizontal.png";
 import TrPortal from "./portal";
 import Confetti from "react-confetti";
-// import emailjs from "emailjs-com"; // Comentar esta línea para desactivar el envío de correo electrónico
+import emailjs from "emailjs-com";
 
 export class App extends Component {
   constructor(props) {
@@ -33,50 +33,48 @@ export class App extends Component {
     }
   };
 
-  // Comentar la función sendEmail para desactivar el envío de correo electrónico
-  // sendEmail = async () => {
-  //   const { email } = this.state;
-  //   if (!email) {
-  //     console.error("No email found");
-  //     return;
-  //   }
+  sendEmail = async () => {
+    const { email } = this.state;
+    if (!email) {
+      console.error("No email found");
+      return;
+    }
 
-  //   const serviceId = "service_868fofh";
-  //   const templateId = "template_6rnqza7";
-  //   const userId = "mxT9ULWdZOKiPqppb";
+    const serviceId = "service_868fofh";
+    const templateId = "template_6rnqza7";
+    const userId = "mxT9ULWdZOKiPqppb";
 
-  //   try {
-  //     await new Promise((resolve) => {
-  //       this.setState({ show: this.state.show }, resolve);
-  //     });
+    try {
+      await new Promise((resolve) => {
+        this.setState({ show: this.state.show }, resolve);
+      });
 
-  //     const templateParams = {
-  //       message_html: `Parabéns! você ganhou um ${this.state.show}!`,
-  //     };
+      const templateParams = {
+        message_html: `Parabéns! você ganhou um ${this.state.show}!`,
+      };
 
-  //     console.log(templateParams);
+      console.log(templateParams);
 
-  //     await emailjs.send(
-  //       serviceId,
-  //       templateId,
-  //       { to_name: email, ...templateParams },
-  //       userId
-  //     );
-  //     console.log("Email sent!");
-  //     this.setState({ emailSent: true });
-  //   } catch (error) {
-  //     console.error("Email error:", error);
-  //   }
-  // };
+      await emailjs.send(
+        serviceId,
+        templateId,
+        { to_name: email, ...templateParams },
+        userId
+      );
+      console.log("Email sent!");
+      this.setState({ emailSent: true });
+    } catch (error) {
+      console.error("Email error:", error);
+    }
+  };
 
   onFinished = async (winner) => {
     console.log("Winner:", winner);
     this.setState({ portal: false, show: winner }, async () => {
       await this.getEmail();
-      // Comentar la siguiente línea si no se desea enviar el correo electrónico
-      // if (!this.state.emailSent) {
-      //   this.sendEmail();
-      // }
+      if (!this.state.emailSent) {
+        this.sendEmail();
+      }
     });
   };
 
@@ -90,65 +88,191 @@ export class App extends Component {
       SAMSUNGFRONTLOADWASHINGMACHINE16KG: 6,
       "10GRAMSGOLDCOIN": 7,
       VOUCHERFORGEORGIAFAMILYTRIPUPTO4: 8,
-      AMAZONGIFTVOUCHER1000: 9,
-      "100GRAMSGOLDBAR": 10,
+      AMAZONGIFTVOUCHERWORTH1000AED: 9,
+      APPLEAIRPODSPRO: 10,
+    };
+    const segments = [
+      // 10% chance
+      "10% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "Mercha de la escola",
+      "10% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "20% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "Mentoría con Francisco SantAna",
+      "10% Descuento curso o suscripción online",
+      "Mercha de la escola",
+      "10% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "Suscripción anual baunilha grátis",
+      "10% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online", // 70% chance
+      "20% Descuento curso o suscripción online",
+      "10% Descuento curso o suscripción online",
+      "Curso presencial intensivo gratis",
+      "10% Descuento curso o suscripción online",
+      "20% Descuento curso o suscripción online", // 30% change
+      "Mercha de la escola", // 30% chance
+      "10% Descuento curso o suscripción online",
+    ];
+
+    const weelColors = () => {
+      let arr = [];
+      let colors = ["#Ce417d", "#534341", "#d6d3c6", "#93c6c7", "#500878"];
+      segments.forEach((el) => {
+        let color = colors.shift();
+        arr.push(color);
+        colors.push(color);
+      });
+
+      return arr;
+    };
+    const segColors = weelColors();
+
+    const onFinished = (winner) => {
+      this.setState({ portal: false, show: winner });
     };
 
-    let array = Object.keys(objIndex);
-
-    let selectedItem = null;
-    if (this.state.show) {
-      selectedItem = objIndex[this.state.show];
-    }
-
     return (
-      <div className="App">
-        {this.state.portal ? (
-          <TrPortal onFinished={this.onFinished} />
-        ) : (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          background:
+            "linear-gradient(68.6deg, rgb(252, 165, 241) 1.8%, rgb(181, 255, 255) 100.5%)",
+          height: "100vh",
+          position: "relative",
+        }}
+      >
+        <h1
+          style={{
+            margin: "auto",
+            marginBottom: "20px",
+            fontSize: "3.5rem",
+            color: "#Ce417d",
+
+            fontWeight: "bold",
+          }}
+        >
+          <i className="titulooo">Gire a roda e ganhe prêmios incríveis.</i>
+        </h1>
+
+        <hr />
+
+        {this.state.show && <Confetti width={1080} height={1920} />}
+        <div style={{ margin: "auto", marginTop: "30px" }}>
+          <WheelComponent
+            segments={segments}
+            segColors={segColors}
+            winningSegment={"8"}
+            onFinished={this.onFinished}
+            primaryColor="gray"
+            contrastColor="white"
+            buttonText="Spin"
+            isOnlyOnce={true}
+          />
+        </div>
+
+        {this.state.portal ? <TrPortal /> : null}
+
+        {this.state.show && (
           <>
-            <div className="App-header">
-              <img src={Logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Wheel of Prizes</h1>
-            </div>
-            <WheelComponent
-              slices={[
-                { value: array[0], name: array[0], id: 1 },
-                { value: array[1], name: array[1], id: 2 },
-                { value: array[2], name: array[2], id: 3 },
-                { value: array[3], name: array[3], id: 4 },
-                { value: array[4], name: array[4], id: 5 },
-                { value: array[5], name: array[5], id: 6 },
-                { value: array[6], name: array[6], id: 7 },
-                { value: array[7], name: array[7], id: 8 },
-                { value: array[8], name: array[8], id: 9 },
-                { value: array[9], name: array[9], id: 10 },
-              ]}
-              onUpdate={(state) => console.log(state)}
-              onFinished={(winner) => this.onFinished(winner)}
-              selected={selectedItem}
-              buttonText={"Spin the wheel!"}
-              primaryColor={"#000"}
-              contrastColor={"#FFF"}
-              fontSize={"18px"}
-              diameter={300}
-              fontFamily={"monospace"}
-              textDistance={80}
-              perpendicularText={true}
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                zIndex: 999,
+              }}
             />
+            <div
+              className="box animated-border"
+              style={{
+                position: "fixed",
+                zIndex: 1000,
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                backgroundColor: "#ffffff",
+                padding: "20px",
+                borderRadius: "15px",
+                width: "90%",
+                maxWidth: "600px",
+                boxShadow: "0px 5px 15px rgba(0,0,0,0.2)",
+                textAlign: "center",
+              }}
+            >
+              <div className="imageBox">
+                <img
+                  src={
+                    IMAGES[
+                      `image${objIndex[this.state.show.split(" ").join("")]}`
+                    ]
+                  }
+                  alt=""
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    marginBottom: "15px",
+                    borderRadius: "10px",
+                  }}
+                />
+              </div>
+              <h2
+                className="titleWin"
+                style={{
+                  color: "#333",
+                  marginBottom: "15px",
+                }}
+              >
+                CONGRATULATIONS!!! YOU HAVE WON {this.state.show}
+                !!!
+              </h2>
+              <div className="closeContainer">
+                <button
+                  className="closepankaj"
+                  onClick={() => this.setState({ show: false })}
+                  style={{
+                    backgroundColor: "#Ce417d",
+                    color: "#ffffff",
+                    border: "none",
+                    padding: "10px 20px",
+                    borderRadius: "12px",
+                    fontSize: "1.5em",
+                    cursor: "pointer",
+                    width: "400px",
+                    height: "70px",
+                  }}
+                >
+                  OK
+                </button>
+              </div>
+            </div>
           </>
         )}
-        {this.state.show && (
-          <div className="prize-result">
-            <h2>Congratulations!</h2>
-            <p>You won a {this.state.show}!</p>
-            {/* Comentar la siguiente línea si no se desea mostrar el confeti */}
-            <Confetti />
-          </div>
-        )}
+
+        <img
+          className="app-image"
+          src={Logo}
+          alt="Escola Sorvete Logo"
+          style={{
+            width: "1100px",
+            height: "450px",
+            marginTop: "auto",
+            position: "relative",
+          }}
+        />
       </div>
     );
   }
 }
-
-export default App;
