@@ -60,7 +60,7 @@ function FormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!name || !email || !phone) {
-            alert('Por favor complete todos los campos.');
+            alert('Por favor, preencha todos os campos.');
             return;
         }
         const data = { email, firstName: name, lastName: phone };
@@ -86,7 +86,7 @@ function FormPage() {
                 <div className='form-wrapper'>
                     <form onSubmit={handleSubmit}>
                         <div className='form-group'>
-                            <label htmlFor='name'>Nombre:</label>
+                            <label htmlFor='name'>Nome:</label>
                             <input
                                 type='text'
                                 className='form-control'
@@ -114,7 +114,7 @@ function FormPage() {
                             </div>
                         </div>
                         <div className='form-group'>
-                            <label htmlFor='phone'>Teléfono:</label>
+                            <label htmlFor='phone'>Telefone:</label>
                             <input
                                 type='tel'
                                 className='form-control'
