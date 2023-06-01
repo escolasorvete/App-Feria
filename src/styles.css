@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * {
-    overflow-x: hidden;
     position: relative;
     margin: 0;
     padding: 0;
@@ -10,11 +9,11 @@
 .App {
     font-family: sans-serif;
     text-align: center;
-    display: flex; /* Add this */
-    flex-direction: column; /* Add this */
-    justify-content: center; /* Add this */
-    align-items: center; /* Add this */
-    height: 100vh; /* Add this */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .titulooo {
@@ -22,7 +21,7 @@
 }
 
 .center {
-    position: relative; /* Change from absolute to relative */
+    position: relative;
     border: 5px solid #ffff00;
     padding: 10px;
 }
@@ -37,7 +36,6 @@
     overflow: hidden;
     width: 650px;
     z-index: 2;
-    /* Remove position: absolute; */
 }
 .box .imageBox {
     text-align: center;
@@ -109,7 +107,7 @@
     margin-bottom: 20px;
     width: 200px;
     height: auto;
-    order: 3; /* Add this */
+    order: 3;
 }
 
 .modal {
@@ -120,7 +118,7 @@
     background: #fff;
     padding: 30px 40px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    z-index: 9999; /* high z-index to ensure it appears above all other elements */
+    z-index: 9999;
 }
 
 .modal .imageBox {

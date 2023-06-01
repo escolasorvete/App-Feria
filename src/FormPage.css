@@ -1,5 +1,5 @@
 .formcito {
-    background: url('./assets/background.svg') no-repeat center center fixed;
+    background: url('./assets/background2.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -26,11 +26,12 @@
     margin-top: 20px;
     border: solid 2px #e73c7e;
     border-radius: 10px;
-    background-origin: border-box;
-    background-clip: content-box, border-box;
+    /* background-origin: border-box;
+    background-clip: content-box, border-box; */
     box-decoration-break: clone;
     animation: gradient 15s linear infinite;
     padding: 20px;
+    background-color: white;
 }
 
 @keyframes gradient {
@@ -63,7 +64,7 @@
 /* For desktop: */
 @media (min-width: 992px) {
     .logo {
-        max-width: 60%;
+        max-width: 42%;
     }
 }
 
@@ -160,4 +161,59 @@
 .botoncito:focus {
     outline: none;
     box-shadow: none;
+}
+
+.my-input {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.my-input:focus {
+    outline: none;
+    background-color: #e5e5e5;
+}
+
+.my-suggestions-container {
+    position: absolute;
+    z-index: 1;
+    top: 100%; /* Position it right below the input */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: auto;
+    max-height: 150px; /* Specify a max-height */
+    overflow-x: visible !important;
+}
+
+.my-suggestion {
+    cursor: pointer;
+    padding: 10px 20px;
+    list-style-type: none;
+}
+
+.my-suggestion-highlighted {
+    color: #fff;
+    background-color: #e73c7e;
+}
+
+.my-suggestion:not(:last-of-type) {
+    border-bottom: 1px solid #ccc; /* Add borders to all but last */
+}
+
+.my-suggestion-highlighted {
+    color: #fff;
+    background-color: #e73c7e;
+}
+
+.autosuggest-wrapper {
+    position: relative;
+    width: 100%;
 }
