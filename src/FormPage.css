@@ -161,3 +161,57 @@
     outline: none;
     box-shadow: none;
 }
+
+.my-input {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.my-input:focus {
+    outline: none;
+    background-color: #e5e5e5;
+}
+
+.my-suggestions-container {
+    position: absolute;
+    z-index: 1;
+    top: 100%; /* Position it right below the input */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: auto;
+    max-height: 150px; /* Specify a max-height */
+}
+
+.my-suggestion {
+    cursor: pointer;
+    padding: 10px 20px;
+    list-style-type: none;
+}
+
+.my-suggestion-highlighted {
+    color: #fff;
+    background-color: #e73c7e;
+}
+
+.my-suggestion:not(:last-of-type) {
+    border-bottom: 1px solid #ccc; /* Add borders to all but last */
+}
+
+.my-suggestion-highlighted {
+    color: #fff;
+    background-color: #e73c7e;
+}
+
+.autosuggest-wrapper {
+    position: relative;
+    width: 100%;
+}
