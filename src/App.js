@@ -7,6 +7,7 @@ import Logo from './assets/logo-horizontal.png';
 import TrPortal from './portal';
 import Confetti from 'react-confetti';
 import emailjs from 'emailjs-com';
+require('dotenv').config();
 
 export class App extends Component {
     constructor(props) {
