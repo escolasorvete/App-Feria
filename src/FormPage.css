@@ -30,6 +30,7 @@
     background-clip: content-box, border-box; */
     box-decoration-break: clone;
     animation: gradient 15s linear infinite;
+
     padding: 20px;
     background-color: white;
 }
@@ -45,13 +46,26 @@
 
 .logo-container {
     display: flex;
-    justify-content: center; /* Center logo */
+    justify-content: center;
     align-items: center;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.015);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .logo {
     max-width: 100%;
     height: auto;
+    animation: pulse 3s infinite;
 }
 
 /* For tablets: */
@@ -93,6 +107,8 @@
 .form-wrapper .form-group input:focus {
     outline: none;
     background-color: #e5e5e5;
+    box-shadow: 0px 0px 10px 1px #e73c7e; /* Add shadow when input field is in focus */
+    transition: all 0.3s ease; /* Smooth transition */
 }
 
 /* Styles for the submit button */
@@ -136,6 +152,8 @@
 
 .botoncito:hover {
     background-color: #c63262; /* Darken the color on hover */
+    transform: scale(1.05); /* Make button slightly larger */
+    transition: all 0.3s ease;
 }
 
 .botoncito:after {
