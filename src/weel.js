@@ -273,7 +273,7 @@ const WheelComponent = ({
         ctx.closePath();
 
         ctx.lineWidth = 10;
-        ctx.strokeStyle = 'white';
+        ctx.strokeStyle = '#ffffff';
         ctx.stroke();
         drawLogo();
     };
