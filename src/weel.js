@@ -3,7 +3,7 @@ import useSound from 'use-sound';
 import logo from './assets/sorvete-logo.png';
 
 // Internals
-import spinSound from './assets/soundspin5.mp3';
+import spinSound from './assets/soundspin6.mp3';
 
 const WheelComponent = ({
     segments,
