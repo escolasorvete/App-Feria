@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
+import logo from './assets/sorvete-logo.png';
 
 // Internals
 import spinSound from './assets/soundspin5.mp3';
@@ -24,9 +25,9 @@ const WheelComponent = ({
     let angleDelta = 0;
     const size = 500;
     let canvasContext = null;
-    let maxSpeed = Math.PI / `${segments.length}`;
-    const upTime = segments.length * 100;
-    const downTime = segments.length * 1000;
+    let maxSpeed = (maxSpeed = Math.PI / (segments.length * 2)); // Slower speed
+    const upTime = 5000;
+    const downTime = 5000;
     let spinStart = 0;
     let frames = 0;
     const centerX = 550;
@@ -164,16 +165,54 @@ const WheelComponent = ({
         }
     };
 
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    let image = new Image();
+    image.src = logo;
+    image.onload = function () {
+        setImageLoaded(true);
+    };
+
+    useEffect(() => {
+        if (imageLoaded) {
+            wheelInit();
+            setTimeout(() => {
+                window.scrollTo(0, 1);
+            }, 0);
+        }
+    }, [imageLoaded]);
+
+    const drawLogo = () => {
+        if (image.complete) {
+            let imageWidth = image.width;
+            let imageHeight = image.height;
+            if (imageWidth > 110 || imageHeight > 110) {
+                const scale = 110 / Math.max(imageWidth, imageHeight);
+                imageWidth *= scale;
+                imageHeight *= scale;
+            }
+            canvasContext.drawImage(
+                image,
+                centerX - imageWidth / 2,
+                centerY - imageHeight / 2,
+                imageWidth,
+                imageHeight
+            );
+        }
+    };
+
     const wheelDraw = () => {
         clear();
         drawWheel();
         drawNeedle();
+        drawLogo();
     };
 
     const draw = () => {
         clear();
         drawWheel();
         drawNeedle();
+        drawLogo();
     };
 
     const drawSegment = (key, lastAngle, angle) => {
@@ -203,7 +242,7 @@ const WheelComponent = ({
         const len = segments.length;
         const PI2 = Math.PI * 2;
         ctx.lineWidth = 1;
-        ctx.strokeStyle = primaryColor || 'black';
+        ctx.strokeStyle = 'white';
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
         ctx.font = '2em proxima-nova';
@@ -217,14 +256,15 @@ const WheelComponent = ({
         ctx.beginPath();
         ctx.arc(centerX, centerY, 50, 0, PI2, false);
         ctx.closePath();
-        ctx.fillStyle = primaryColor || 'black';
+        ctx.fillStyle = 'white';
         ctx.lineWidth = 10;
         ctx.strokeStyle = contrastColor || 'white';
         ctx.fill();
-        ctx.font = 'bold 3em proxima-nova';
-        ctx.fillStyle = contrastColor || 'white';
-        ctx.textAlign = 'center';
-        ctx.fillText(buttonText || 'Spin', centerX, centerY + 3);
+        // ctx.font = 'bold 3em proxima-nova';
+        // ctx.fillStyle = contrastColor || 'white';
+        // ctx.textAlign = 'center';
+        // ctx.fillText(buttonText || 'Spin', centerX, centerY + 3);
+
         ctx.stroke();
 
         // Draw outer circle
@@ -233,8 +273,9 @@ const WheelComponent = ({
         ctx.closePath();
 
         ctx.lineWidth = 10;
-        ctx.strokeStyle = primaryColor || 'black';
+        ctx.strokeStyle = 'white';
         ctx.stroke();
+        drawLogo();
     };
 
     const drawNeedle = () => {

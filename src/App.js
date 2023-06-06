@@ -187,6 +187,7 @@ export class App extends Component {
                         contrastColor='white'
                         buttonText='Spin'
                         isOnlyOnce={true}
+                        spinDuration={6000}
                     />
                 </div>
 
