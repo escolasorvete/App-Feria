@@ -165,13 +165,12 @@ export class App extends Component {
                         marginBottom: '20px',
                         fontSize: '3.5rem',
                         color: '#Ce417d',
-
-                        fontWeight: 'bold',
+                        letterSpacing: '2px',
+                        textDecoration: 'underline',
                     }}
+                    className='titulooo'
                 >
-                    <i className='titulooo'>
-                        Gire a roda e ganhe prêmios incríveis.
-                    </i>
+                    Gire a roda e ganhe prêmios incríveis.
                 </h1>
 
                 <hr />
@@ -187,6 +186,7 @@ export class App extends Component {
                         contrastColor='white'
                         buttonText='Spin'
                         isOnlyOnce={true}
+                        spinDuration={6000}
                     />
                 </div>
 

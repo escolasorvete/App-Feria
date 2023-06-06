@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.cdnfonts.com/css/gotham');
 
 * {
     position: relative;
@@ -7,7 +7,7 @@
 }
 
 .App {
-    font-family: sans-serif;
+    font-family: 'Gotham', sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
 }
 
 .titulooo {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Gotham', sans-serif;
 }
 
 .center {
