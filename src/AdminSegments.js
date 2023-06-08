@@ -14,6 +14,7 @@ const Container = styled.div`
         rgb(254, 150, 150) 90.4%
     );
     font-family: 'Roboto', sans-serif;
+    padding-bottom: 20px;
 `;
 
 const AppHeader = styled.h1`
@@ -47,6 +48,12 @@ const Segment = styled.div`
     margin-bottom: 1em;
     border-bottom: 1px solid #ddd;
     padding-bottom: 1em;
+`;
+
+const ButtonGroup = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 `;
 
 const Label = styled.label`
@@ -113,18 +120,49 @@ const DeleteButton = styled.button`
 `;
 
 const SubmitButton = styled.button`
-    background: #e73c7e;
-    color: #fff;
-    padding: 0.6em 2em;
-    border: none;
-    border-radius: 5px;
+    align-items: center;
+    appearance: none;
+    background: linear-gradient(
+        109.6deg,
+        rgb(235, 173, 254) 11.2%,
+        rgb(254, 150, 150) 90.4%
+    );
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 100px;
+    border-width: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #ffffff;
     cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 1em;
-    align-self: center;
+    display: inline-flex;
+    font-family: CircularStd, sans-serif;
+    font-size: 1rem;
+    height: auto;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 6px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s, background-position 0.2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    top: 5px;
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
 
     &:hover {
-        background: #e73c7e;
+        background-position: -20px -20px;
+    }
+
+    &:focus:not(:active) {
+        box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 0.125em;
     }
 `;
 
@@ -212,15 +250,17 @@ const App = () => {
                                 handleSegmentChange(index, event.target.value)
                             }
                         />
-                        <DeleteButton
-                            type='button'
-                            onClick={() => handleSegmentDelete(index)}
-                        >
-                            Eliminar
-                        </DeleteButton>
+                        <ButtonGroup>
+                            <DeleteButton
+                                type='button'
+                                onClick={() => handleSegmentDelete(index)}
+                            >
+                                Eliminar
+                            </DeleteButton>
+                            <SubmitButton type='submit'>Guardar</SubmitButton>
+                        </ButtonGroup>
                     </Segment>
                 ))}
-                <SubmitButton type='submit'>Guardar</SubmitButton>
             </Form>
         </Container>
     );
