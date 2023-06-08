@@ -26,6 +26,7 @@
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "2.0.1",
     "sheet2api-js": "^0.6.1",
+    "styled-components": "^6.0.0-rc.3",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
