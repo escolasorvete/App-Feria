@@ -67,13 +67,14 @@ function FormPage() {
         axios
             .post(`${process.env.REACT_APP_API_URL}/api/mailchimp`, data)
             .then((response) => {
-                alert(response.data.message);
+                alert('Registration successful!');
                 setName('');
                 setEmail('');
                 setPhone('');
             })
             .catch((error) => {
                 console.error(error);
+                alert('Registration failed, please try again.');
             });
     };
 
