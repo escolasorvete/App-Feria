@@ -65,7 +65,7 @@ function FormPage() {
         }
         const data = { email, firstName: name, lastName: phone };
         axios
-            .post(process.env.REACT_APP_API_URL, data)
+            .post(`${process.env.REACT_APP_API_URL}/api/mailchimp`, data)
             .then((response) => {
                 alert(response.data.message);
                 setName('');
